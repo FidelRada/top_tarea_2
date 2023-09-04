@@ -17,15 +17,18 @@ def receive_message():
     from_number = request.json["From"]
     print(message_body, from_number)
         
-    message = client.messages.create(
-        from_='whatsapp:+14155238886',
-        body='tu mensaje fue '+message_body,
-        to='whatsapp:+'+from_number
-    )
-    
-    print(message)
-
-    return "Mensaje recibido", 200
+    try:
+        message = client.messages.create(
+            from_='whatsapp:+14155238886',
+            body='tu mensaje fue '+message_body,
+            to='whatsapp:+'+from_number
+        )
+        
+        print(message)
+        return "Mensaje recibido", 200
+    except:
+        print("ocurrio algo")
+        return "ocurrio algo"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
