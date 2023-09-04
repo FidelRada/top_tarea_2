@@ -5,6 +5,11 @@ app = Flask(__name__)
 account_sid = "AC40c157d2b7df3710b56bc6af077e7d8d"
 auth_token = "a0f34e371a6903b07278fa72abb6de37"
 client = Client(account_sid, auth_token)
+
+@app.route("/", methods=["GET"])
+def main():
+    return "como es posible que no funcione!!"
+    
 @app.route("/webhook", methods=["POST"])
 def receive_message():
     print(request.json)
