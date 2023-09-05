@@ -23,7 +23,7 @@ def receive_message():
     body = request.values.get('Body', None)
     # Add a message
     #resp.message("The Robots are coming! Head for the hills!")
-    resp.message("hola como estas")
+    resp.message(body)#("hola como estas")
 
     return str(resp)
 
