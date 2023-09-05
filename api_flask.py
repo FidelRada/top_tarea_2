@@ -24,8 +24,15 @@ def receive_message():
     body = request.values.get('Body', None)
     # Add a message
     #resp.message("The Robots are coming! Head for the hills!")
-    respGPT = gpt.get_response(body)
-    resp.message(respGPT)#(body)#("hola como estas")
+    try:
+        respGPT = gpt.get_response(body)
+    except :
+        print("paso algo con el GPT")
+    
+    try:
+        resp.message(respGPT)#(body)#("hola como estas")
+    except:
+        print("paso algo con el twilio")
 
     return str(resp)
 
