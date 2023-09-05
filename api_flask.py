@@ -21,7 +21,7 @@ def receive_message():
         print(message_body, from_number)
         
         print("ocuario algo en el json")
-        Response()
+        
         
         message = client.messages.create(
             from_='whatsapp:+14155238886',
