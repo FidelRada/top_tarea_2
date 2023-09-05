@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request, jsonify, Response
 from twilio.rest import Client
+from twilio.twiml.messaging_response import MessagingResponse
 
 app = Flask(__name__)
 account_sid = os.environ['sid'] #"AC40c157d2b7df3710b56bc6af077e7d8d"
@@ -14,7 +15,16 @@ def main():
 @app.route("/webhook", methods=["POST", "GET"])
 def receive_message():
 
-    try:
+    """Respond to incoming calls with a simple text message."""
+    # Start our TwiML response
+    resp = MessagingResponse()
+
+    # Add a message
+    resp.message("The Robots are coming! Head for the hills!")
+
+    return str(resp)
+
+    """try:
         print(request.json)
         message_body = request.json["Body"]
         from_number = request.json["From"]
@@ -34,6 +44,7 @@ def receive_message():
     except:
         print("ocurrio algo")
         return "ocurrio algo", 400
+        """
 
 if __name__ == "__main__":
     app.run(debug=False, host="0.0.0.0", port=80)
