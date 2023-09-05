@@ -20,6 +20,7 @@ def receive_message():
     # Start our TwiML response
     resp = MessagingResponse()
 
+    body = request.values.get('Body', None)
     # Add a message
     #resp.message("The Robots are coming! Head for the hills!")
     resp.message("hola como estas")
