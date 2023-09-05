@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from twilio.rest import Client
 
 app = Flask(__name__)
@@ -13,16 +13,16 @@ def main():
     
 @app.route("/webhook", methods=["POST"])
 def receive_message():
+
     try:
         print(request.json)
         message_body = request.json["Body"]
         from_number = request.json["From"]
         print(message_body, from_number)
         
-    except:
-        print("ocuario algo en el json", 400)
+        print("ocuario algo en el json")
+        Response()
         
-    try:
         message = client.messages.create(
             from_='whatsapp:+14155238886',
             body='tu mensaje fue '+message_body,
