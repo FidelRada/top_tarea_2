@@ -22,7 +22,7 @@ def receive_message():
 
     # Add a message
     #resp.message("The Robots are coming! Head for the hills!")
-    resp.message(json.dumps(request.json))
+    resp.message("hola como estas")
 
     return str(resp)
 
