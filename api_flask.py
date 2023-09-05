@@ -21,7 +21,7 @@ def receive_message():
         message = client.messages.create(
             from_='whatsapp:+14155238886',
             body='tu mensaje fue '+message_body,
-            to='whatsapp:+'+from_number
+            to='whatsapp:+59160910990'
         )
         
         print(message)
