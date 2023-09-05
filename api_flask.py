@@ -3,7 +3,7 @@ from twilio.rest import Client
 
 app = Flask(__name__)
 account_sid = "AC40c157d2b7df3710b56bc6af077e7d8d"
-auth_token = "a0f34e371a6903b07278fa72abb6de37"
+auth_token = "734a6fa7afd32245c4b5ed4cbc3313fd"
 client = Client(account_sid, auth_token)
 
 @app.route("/", methods=["GET"])
@@ -21,7 +21,7 @@ def receive_message():
         message = client.messages.create(
             from_='whatsapp:+14155238886',
             body='tu mensaje fue '+message_body,
-            to='whatsapp:+59160910990'
+            to='whatsapp:+'+ from_number#59160910990'
         )
         
         print(message)
@@ -31,5 +31,5 @@ def receive_message():
         return "ocurrio algo"
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=80)
+    app.run(debug=False, host="0.0.0.0", port=80)
     
