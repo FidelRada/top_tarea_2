@@ -8,6 +8,7 @@ app = Flask(__name__)
 account_sid = os.environ['sid'] #"AC40c157d2b7df3710b56bc6af077e7d8d"
 auth_token = os.environ['token'] #"734a6fa7afd32245c4b5ed4cbc3313fd"
 #client = Client(account_sid, auth_token)
+gpt = ChatGPT(os.environ['key_gpt'])
 
 @app.route("/", methods=["GET"])
 def main():
@@ -23,7 +24,6 @@ def receive_message():
     body = request.values.get('Body', None)
     # Add a message
     #resp.message("The Robots are coming! Head for the hills!")
-    gpt = ChatGPT(os.environ['key_gpt'])
     respGPT = gpt.get_response(body)
     resp.message(respGPT)#(body)#("hola como estas")
 
