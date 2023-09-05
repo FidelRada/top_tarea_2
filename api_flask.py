@@ -11,7 +11,7 @@ client = Client(account_sid, auth_token)
 def main():
     return "como es posible que no funcione!!"
     
-@app.route("/webhook", methods=["POST"])
+@app.route("/webhook", methods=["POST", "GET"])
 def receive_message():
 
     try:
