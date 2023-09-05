@@ -1,13 +1,12 @@
 import os
-import json
 from flask import Flask, request, jsonify, Response
-from twilio.rest import Client
+#from twilio.rest import Client
 from twilio.twiml.messaging_response import MessagingResponse
 
 app = Flask(__name__)
 account_sid = os.environ['sid'] #"AC40c157d2b7df3710b56bc6af077e7d8d"
 auth_token = os.environ['token'] #"734a6fa7afd32245c4b5ed4cbc3313fd"
-client = Client(account_sid, auth_token)
+#client = Client(account_sid, auth_token)
 
 @app.route("/", methods=["GET"])
 def main():
