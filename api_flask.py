@@ -1,4 +1,5 @@
 import os
+import json
 from flask import Flask, request, jsonify, Response
 from twilio.rest import Client
 from twilio.twiml.messaging_response import MessagingResponse
@@ -21,7 +22,7 @@ def receive_message():
 
     # Add a message
     #resp.message("The Robots are coming! Head for the hills!")
-    resp.message(request.json)
+    resp.message(json.dumps(request.json))
 
     return str(resp)
 
