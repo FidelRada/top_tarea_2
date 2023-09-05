@@ -20,7 +20,8 @@ def receive_message():
     resp = MessagingResponse()
 
     # Add a message
-    resp.message("The Robots are coming! Head for the hills!")
+    #resp.message("The Robots are coming! Head for the hills!")
+    resp.message(request.json)
 
     return str(resp)
 
