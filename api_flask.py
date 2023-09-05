@@ -1,9 +1,10 @@
+import os
 from flask import Flask, request, jsonify
 from twilio.rest import Client
 
 app = Flask(__name__)
-account_sid = "AC40c157d2b7df3710b56bc6af077e7d8d"
-auth_token = "734a6fa7afd32245c4b5ed4cbc3313fd"
+account_sid = os.environ['sid'] #"AC40c157d2b7df3710b56bc6af077e7d8d"
+auth_token = os.environ['token'] #"734a6fa7afd32245c4b5ed4cbc3313fd"
 client = Client(account_sid, auth_token)
 
 @app.route("/", methods=["GET"])
@@ -21,7 +22,7 @@ def receive_message():
         message = client.messages.create(
             from_='whatsapp:+14155238886',
             body='tu mensaje fue '+message_body,
-            to='whatsapp:+'+ from_number#59160910990'
+            to='whatsapp:+'+ from_number #59160910990'
         )
         
         print(message)
