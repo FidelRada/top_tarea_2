@@ -1,5 +1,6 @@
 import os
-from flask import Flask, request, jsonify, Response
+from api_chatGPT import ChatGPT
+from flask import Flask, request
 #from twilio.rest import Client
 from twilio.twiml.messaging_response import MessagingResponse
 
@@ -22,7 +23,9 @@ def receive_message():
     body = request.values.get('Body', None)
     # Add a message
     #resp.message("The Robots are coming! Head for the hills!")
-    resp.message(body)#("hola como estas")
+    gpt = ChatGPT(os.environ['key_gpt'])
+    respGPT = gpt.get_response(body)
+    resp.message(respGPT)#(body)#("hola como estas")
 
     return str(resp)
 
