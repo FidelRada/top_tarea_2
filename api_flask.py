@@ -13,10 +13,14 @@ def main():
     
 @app.route("/webhook", methods=["POST"])
 def receive_message():
-    print(request.json)
-    message_body = request.json["Body"]
-    from_number = request.json["From"]
-    print(message_body, from_number)
+    try:
+        print(request.json)
+        message_body = request.json["Body"]
+        from_number = request.json["From"]
+        print(message_body, from_number)
+        
+    except:
+        print("ocuario algo en el json", 400)
         
     try:
         message = client.messages.create(
@@ -29,7 +33,7 @@ def receive_message():
         return "Mensaje recibido", 200
     except:
         print("ocurrio algo")
-        return "ocurrio algo"
+        return "ocurrio algo", 400
 
 if __name__ == "__main__":
     app.run(debug=False, host="0.0.0.0", port=80)
